@@ -15,6 +15,15 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
+    public function init()
+    {
+        parent::init();
+        // resetting BootstrapAsset to not load own css files
+        \Yii::$app->assetManager->bundles['yii\\bootstrap\\BootstrapAsset'] = [
+            'css' => [],
+            'js' => []
+        ];
+    }
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
