@@ -4,7 +4,7 @@
 
 $this->title = 'Pick \'Em Pro';
 ?>
-<!-- Banner -->
+<!-- Frontpage Banner -->
     <section id="banner">
         <div class="container">
             <h2>Banner</h2>
