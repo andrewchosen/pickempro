@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section id="login">
     <div class="container">
-        <h1><?= Html::encode($this->title) ?></h1>
+        <h2><?= Html::encode($this->title) ?></h2>
 
         <p>Please fill out the following fields to login:</p>
 

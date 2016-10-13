@@ -78,7 +78,7 @@ a.button + a.button {
 	box-sizing: border-box;
 }
 
-#how-its-different .container, #join-or-create .container, footer .container, fieldset {
+#how-its-different .container, #join-or-create .container, footer .container, fieldset, #users, #league {
 	padding: 60px 0;
 }
 
@@ -115,6 +115,49 @@ header nav ul li a {
 
 header nav ul li a:hover {
 	background: #eee;
+}
+
+/* Admin Menu */
+ul.admin-nav {
+	display: block;
+	clear: both;
+	text-align: right;
+	margin: 30px 0;
+}
+
+ul.admin-nav > ul {
+	display: inline;
+}
+
+ul.admin-nav > li {
+	display: inline;
+}
+
+ul.admin-nav > li > a {
+	padding: 12px 20px;
+	text-decoration: none;
+	color: #54a4db;
+}
+
+ul.admin-nav > li > a:hover {
+	color: #4384af;
+	background: #fff;
+}
+
+/* Tables */
+
+table.table {
+	margin: 30px 0;
+	width: 100%;
+}
+
+table.table th, table.table td {
+	padding: 14px;
+}
+
+table.table th {
+	text-align: center;
+	border: 1px solid #ccc;
 }
 
 /* Page Title */
@@ -335,7 +378,7 @@ header nav ul li a:hover {
 	box-sizing: border-box;
 }
 
-#picks h3, #main aside h3 {
+#picks h3, #leagues h3, #main aside h3 {
 	color: #20557b;
 	font-size: 2em;
 	font-weight: 100;

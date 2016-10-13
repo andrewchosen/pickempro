@@ -1,10 +1,21 @@
 	<section id="page-title">
 		<div class="container">
-			<h2>Awesome League of Awesome</h2>
+			<h2>Dashboard</h2>
 		</div>
 	</section>
 	<!-- Main Content -->
 	<section id="main">
+		<section id="leagues">
+			<h3>Your Leagues</h3>
+			<?php
+			foreach ($model as $league) {
+				echo "<ul>";
+				echo "<li><strong>" . $league->name . "</strong>";
+				echo " <a href='/league/{$league->id}'>Select</a></li>";
+				echo "</ul>";
+			}
+			?>
+		</section>
 		<section id="picks">
 				<h3>Your Week 10 Picks</h3>
 				<table>
