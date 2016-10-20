@@ -43,6 +43,7 @@ AppAsset::register($this);
                         'linkOptions' => ['data-method' => 'post'],
                         'items' => [
                             ['label' => 'Leagues', 'url' => '/league'],
+                            ['label' => 'Account Settings', 'url' => '/user/settings/account'],
                             ['label' => 'Sign out',
                                 'url' => ['/user/security/logout'],
                                 'linkOptions' => ['data-method' => 'post']],
