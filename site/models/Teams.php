@@ -58,16 +58,16 @@ class Teams extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMatches($id)
+    public function getMatches()
     {
-        return $this->hasMany(Match::className(), ['home_team' => $id]);
+        return $this->hasMany(Match::className(), ['home_team' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMatches0($id)
+    public function getMatches0()
     {
-        return $this->hasMany(Match::className(), ['away_team' => $id]);
+        return $this->hasMany(Match::className(), ['away_team' => 'id']);
     }
 }

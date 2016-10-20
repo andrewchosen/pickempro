@@ -7,148 +7,87 @@ use app\models\Teams;
 /* @var $this yii\web\View */
 /* @var $model app\models\League */
 
-$this->title = $model[0]->name;
+$this->title = $model['league']->name;
 $this->params['breadcrumbs'][] = ['label' => 'Leagues', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
+<pre>
+<?php //print_r($model['league']); die(); ?>
+</pre>
+
     <section id="page-title">
         <div class="container">
-            <h2><?php Html::encode($this->title) ?></h2>
-        </div>
-    </section>
-
-    <section id="league">
-        <div class="container">
-
-        <?php print_r($model[1]); ?>
-
-        <?= $this->render('../../vendor/dektrium/yii2-user/views/admin/_menu') ?>
-
-        <p>
-            <?= Html::a('Update', ['update', 'id' => $model[0]->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('Delete', ['delete', 'id' => $model[0]->id], [
-                'class' => 'btn btn-danger',
-                'data' => [
-                    'confirm' => 'Are you sure you want to delete this item?',
-                    'method' => 'post',
-                ],
-            ]) ?>
-        </p>
-
+            <h2><?php echo Html::encode($this->title) ?></h2>
         </div>
     </section>
 
     <!-- Main Content -->
     <section id="main">
+        <?= $this->render('../../vendor/dektrium/yii2-user/views/admin/_menu') ?>
         <section id="picks">
-                <h3>Your Week 10 Picks</h3>
+                <h3>Your Week 6 Picks</h3>
                 <table>
                 <?php
-                $i = count($model[1]);
+                $count = count($model['match']);
                 echo "<tr>";
                 echo    "<th colspan='4'>Thursday</th>";
                 echo "</tr>";
-                foreach ($model[1] as $match) {
-                    if ($match->day == "Thursday")
+                for ($i = 0; $i < count($model['match']); $i++) {
+                    $teams = $model['teams'][$i];
+                    $awayTeam = $teams->awayTeam->location . " " . $teams->awayTeam->team_name . " (" . $teams->awayTeam->current_wins . "-" . $teams->awayTeam->current_losses . ")";
+                    $homeTeam = $teams->homeTeam->location . " " . $teams->homeTeam->team_name . " (" . $teams->homeTeam->current_wins . "-" . $teams->homeTeam->current_losses . ")";
+                    if ($model['match'][$i]->day == "Thursday")
                     {
                         echo "<tr>";
-                        echo "  <td>" . $i . " pts</td>";
-                        echo "  <td><p><label><input type='radio' name='game1'>" . $match->away_team . "</label></p></td>";
+                        echo "  <td>" . $count . " pts</td>";
+                        echo "  <td><p><label><input type='radio' name='game".$count."'>" . $awayTeam . "</label></p></td>";
                         echo "  <td>@</td>";
-                        echo "  <td><p><label>" . $match->home_team . "<input type='radio' name='game1'></label></p></td>";
+                        echo "  <td><p><label>" . $homeTeam . "<input type='radio' name='game".$count."'></label></p></td>";
                         echo "</tr>";
-                        $i--;
+                        $count--;
                     }
+
                 }
                 echo "<tr>";
                 echo    "<th colspan='4'>Sunday</th>";
                 echo "</tr>";
-                foreach ($model[1] as $match){
-                    if ($match->day == "Sunday")
+                for ($i = 0; $i < count($model['match']); $i++) {
+                    $teams = $model['teams'][$i];
+                    $awayTeam = $teams->awayTeam->location . " " . $teams->awayTeam->team_name . " (" . $teams->awayTeam->current_wins . "-" . $teams->awayTeam->current_losses . ")";
+                    $homeTeam = $teams->homeTeam->location . " " . $teams->homeTeam->team_name . " (" . $teams->homeTeam->current_wins . "-" . $teams->homeTeam->current_losses . ")";
+                    if ($model['match'][$i]->day == "Sunday")
                     {
                         echo "<tr>";
-                        echo "  <td>" . $i . " pts</td>";
-                        echo "  <td><p><label><input type='radio' name='game1'>" . $match->away_team . "</label></p></td>";
+                        echo "  <td>" . $count . " pts</td>";
+                        echo "  <td><p><label><input type='radio' name='game".$count."'>" . $awayTeam . "</label></p></td>";
                         echo "  <td>@</td>";
-                        echo "  <td><p><label>" . $match->home_team . "<input type='radio' name='game1'></label></p></td>";
+                        echo "  <td><p><label>" . $homeTeam . "<input type='radio' name='game".$count."'></label></p></td>";
                         echo "</tr>";
-                        $i--;
+                        $count--;
                     }
+
                 }
                 echo "<tr>";
                 echo    "<th colspan='4'>Monday</th>";
                 echo "</tr>";
-                foreach ($model[1] as $match){
-                    if ($match->day == "Monday")
+                for ($i = 0; $i < count($model['match']); $i++) {
+                    $teams = $model['teams'][$i];
+                    $awayTeam = $teams->awayTeam->location . " " . $teams->awayTeam->team_name . " (" . $teams->awayTeam->current_wins . "-" . $teams->awayTeam->current_losses . ")";
+                    $homeTeam = $teams->homeTeam->location . " " . $teams->homeTeam->team_name . " (" . $teams->homeTeam->current_wins . "-" . $teams->homeTeam->current_losses . ")";
+                    if ($model['match'][$i]->day == "Monday")
                     {
                         echo "<tr>";
-                        echo "  <td>" . $i . " pts</td>";
-                        echo "  <td><p><label><input type='radio' name='game1'>" . $match->away_team . "</label></p></td>";
+                        echo "  <td>" . $count . " pts</td>";
+                        echo "  <td><p><label><input type='radio' name='game".$count."'>" . $awayTeam . "</label></p></td>";
                         echo "  <td>@</td>";
-                        echo "  <td><p><label>" . $match->home_team . "<input type='radio' name='game1'></label></p></td>";
+                        echo "  <td><p><label>" . $homeTeam . "<input type='radio' name='game".$count."'></label></p></td>";
                         echo "</tr>";
-                        $i--;
+                        $count--;
                     }
+
                 }
                 ?>
-                    <tr>
-                        <th colspan="4">Thursday, November 10th</th>
-                    </tr>
-                    <tr>
-                        <td>15pts</td>
-                        <td>
-                            <p><label><input type="radio" name="game1"> Cleveland Browns (3-6)</label></p>
-                            <p>Underdog(-3)</p>
-                        </td>
-                        <td>@</td>
-                        <td><p><label>Baltimore Ravens (5-4) <input type="radio" name="game1"></label></p></td>
-                    </tr>
-                    <tr>
-                        <th colspan="4">Sunday, November 13th</th>
-                    </tr>
-                    <tr>
-                        <td>14pts</td>
-                        <td>
-                            <p><input type="radio" name="game2"> Texans (6-3)</p>
-                        </td>
-                        <td>@</td>
-                        <td>
-                            <p><label>Jaguars (6-3) <input type="radio" name="game2"><label></p>
-                            <p>Underdog(-2)</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>13pts</td>
-                        <td>
-                            <p><input type="radio" name="game3"> Broncos (2-7)</p>
-                            <p>Underdog(-5)</p>
-                        </td>
-                        <td>@</td>
-                        <td>
-                            <p>Saints (4-5) <input type="radio" name="game3"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12pts</td>
-                        <td>
-                            <p><input type="radio" name="game4"> Rams (6-3)</p>
-                        </td>
-                        <td>@</td>
-                        <td>
-                            <p>@Jets (2-7) <input type="radio" name="game4"></p>
-                            <p>Underdog(-6)</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11pts</td>
-                        <td>
-                            <p><input type="radio" name="game5"> Falcons (3-6)</p>
-                            <p>Underdog(-4)</p>
-                        </td>
-                        <td>@</td>
-                        <td>Eagles (5-4) <input type="radio" name="game5"></td>
-                    </tr>
                 </table>
             </section>
             <aside>
@@ -157,7 +96,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <ul>
                         <li><a href="">Invite/Accept Teams</a></li>
                         <li><a href="">Manage Teams</a></li>
-                        <li><a href="">League Settings</a></li>
+                        <li><?= Html::a('League Settings', ['update', 'id' => $model['league']->id]) ?></li>
                     </ul>
                 </section>
                 <section id="league-menu">

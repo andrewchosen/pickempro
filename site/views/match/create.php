@@ -10,12 +10,12 @@ $this->title = 'Create Match';
 $this->params['breadcrumbs'][] = ['label' => 'Matches', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<section id="matches">
+<section id="league">
     <div class="container">
 
     <?= $this->render('../../vendor/dektrium/yii2-user/views/admin/_menu') ?>
 
-    <h2><?= Html::encode($this->title) ?></h2>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

@@ -4,16 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Match */
+/* @var $model app\models\Teams */
 
-$this->title = $model->awayTeam->team_name . " @ " . $model->homeTeam->team_name . ", Week " . $model->week;
-$this->params['breadcrumbs'][] = ['label' => 'Matches', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Teams', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<section id="league">
-    <div class="container">
-
-    <?= $this->render('../../vendor/dektrium/yii2-user/views/admin/_menu') ?>
+<div class="teams-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -32,16 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'homeTeam.team_name',
-            'awayTeam.team_name',
-            'is_underdog',
-            'season',
-            'week',
-            // 'day',
-            // 'time',
-            // 'created',
+            'team_name',
+            'location',
+            'current_wins',
+            'current_losses',
+            'division',
+            'conference',
         ],
     ]) ?>
 
-    </div>
-</section>
+</div>

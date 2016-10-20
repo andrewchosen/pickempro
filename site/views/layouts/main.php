@@ -39,10 +39,16 @@ AppAsset::register($this);
                 ['label' => 'Create League', 'url' => ['/league/create']],
                 Yii::$app->user->isGuest ?
                     ['label' => 'Sign in', 'url' => ['/user/security/login']] :
-                    ['label' => 'Sign out (' . Yii::$app->user->identity->username . ')',
-                        'url' => ['/user/security/logout'],
-                        'linkOptions' => ['data-method' => 'post']],
-                ['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest]
+                    ['label' => Yii::$app->user->identity->username,
+                        'linkOptions' => ['data-method' => 'post'],
+                        'items' => [
+                            ['label' => 'Leagues', 'url' => '/league'],
+                            ['label' => 'Sign out',
+                                'url' => ['/user/security/logout'],
+                                'linkOptions' => ['data-method' => 'post']],
+                        ],
+                    ],
+                ['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
             ],
         ]);
 

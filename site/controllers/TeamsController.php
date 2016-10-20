@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\League;
-use app\models\LeagueSearch;
-use app\models\Match;
+use app\models\Teams;
+use app\models\TeamsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LeagueController implements the CRUD actions for League model.
+ * TeamsController implements the CRUD actions for Teams model.
  */
-class LeagueController extends Controller
+class TeamsController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class LeagueController extends Controller
     }
 
     /**
-     * Lists all League models.
+     * Lists all Teams models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LeagueSearch();
+        $searchModel = new TeamsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,30 +45,25 @@ class LeagueController extends Controller
     }
 
     /**
-     * Displays a single League model.
+     * Displays a single Teams model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-        $match = Match::find()
-            ->where(['week' => 6])->all();
-        $teams = Match::find()
-            ->with(['awayTeam', 'homeTeam'])->all();
-
         return $this->render('view', [
-            'model' => [ 'league' => $this->findModel($id), 'match' => $match, 'teams' => $teams ]
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new League model.
+     * Creates a new Teams model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new League();
+        $model = new Teams();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -81,7 +75,7 @@ class LeagueController extends Controller
     }
 
     /**
-     * Updates an existing League model.
+     * Updates an existing Teams model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -100,7 +94,7 @@ class LeagueController extends Controller
     }
 
     /**
-     * Deletes an existing League model.
+     * Deletes an existing Teams model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -113,19 +107,18 @@ class LeagueController extends Controller
     }
 
     /**
-     * Finds the League model based on its primary key value.
+     * Finds the Teams model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return League the loaded model
+     * @return Teams the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = League::findOne($id)) !== null) {
+        if (($model = Teams::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }

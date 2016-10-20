@@ -53,8 +53,8 @@ class Match extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'home_team' => 'Home Team',
-            'away_team' => 'Away Team',
+            'homeTeam.team_name' => 'Home Team',
+            'awayTeam.team_name' => 'Away Team',
             'is_underdog' => 'Is Underdog',
             'season' => 'Season',
             'week' => 'Week',

@@ -12,9 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'home_team')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'home_team')->textInput() ?>
 
-    <?= $form->field($model, 'away_team')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'away_team')->textInput() ?>
 
     <?= $form->field($model, 'is_underdog')->textInput() ?>
 

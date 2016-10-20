@@ -74,8 +74,13 @@ a.button + a.button {
 .container, #main {
 	width: 80%;
 	margin: auto;
-	overflow: auto;
 	box-sizing: border-box;
+}
+
+.container::after, #main::after {
+	content:" ";
+    display:table;
+    clear:both;
 }
 
 #how-its-different .container, #join-or-create .container, footer .container, fieldset, #users, #league {
@@ -102,19 +107,50 @@ header nav {
 	text-align: right;
 }
 
-header nav ul li {
+header nav > ul > li {
 	display: inline-block;
+	position: relative;
 }
 
-header nav ul li a {
+header nav > ul > li > ul {
+	position: absolute;
+	right: 0;
+	top: 80px;
+	display: none;
+}
+
+header nav > ul > li:hover > ul {
 	display: block;
-	padding: 37px 30px;
+}
+
+header nav > ul > li > ul > li {
+	width: 160px;
+}
+
+header nav > ul > li > ul > li > a {
+	padding: 15px;
+	background: #fff;
+	display: block;
+	text-decoration: none;
+	color: #777;
+	font-weight: 300;
+	font-size: .8rem;
+}
+
+header nav > ul > li > ul > li > a:hover {
+	background: #eee;
+	color: #444;
+}
+
+header nav > ul > li > a {
+	display: block;
+	padding: 37px 15px;
 	color: #444;
 	text-decoration: none;
 }
 
-header nav ul li a:hover {
-	background: #eee;
+header nav > ul > li:hover {
+	background: #fff;
 }
 
 /* Admin Menu */
